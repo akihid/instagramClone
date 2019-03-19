@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new
+    @user = User.new(set_user_param)
     if @user.save
       redirect_to users_path
     else
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   private
 
   def set_user_param
-    params.require(:user).permit(:name , :email ,:password)
+    params.require(:user).permit(:name , :email ,:password ,:password_confirmation)
   end
 
 
