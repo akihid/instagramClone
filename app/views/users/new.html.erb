@@ -1,4 +1,14 @@
- 
+ <% if @user.errors.any? %>
+  <div id ="error_explantion">
+  <p><%= pluralize(@user.errors.count , "件") %>のエラーがあります。<p>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_with(model:@user , local: true) do |f| %>
 
   <%= f.label :name %>
