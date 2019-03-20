@@ -1,0 +1,8 @@
+<%= link_to '新規作成' , new_post_path %>
+
+<% @posts.each do |post|%>
+  <pre> <%= post.content%></pre>
+  <%= image_tag(post.picture.url) if post.picture && post.picture.url %>
+  <%= link_to '編集' , edit_post_path(post.id)%>
+  <%= link_to '削除' , post_path(post.id) ,method: :delete , data:{confirm: "削除してもよろしいですか？"}%>
+<% end %>
