@@ -9,6 +9,23 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+<header>
+      <div class="header-left">
+        <%# <%= link_to image_tag('logo.png'), new_session_path ,class:"logo_image"%> 
+      </div>
+      <div class="header-right">
+      <ul>
+        <% if logged_in? %>
+          <li><p><%= current_user.name %></p></li>
+          <li><%= link_to 'ログアウト' , session_path(current_user.id) ,method: :delete %></li>
+        <% else %>
+          <li><%= link_to 'ログイン' , new_session_path %></li>
+          <li><%= link_to '会員登録' , new_user_path %></li>
+        <% end %>
+      </ul>
+      </div>
+</header>
+
   <body>
     <%= yield %>
   </body>

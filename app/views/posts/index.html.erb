@@ -2,7 +2,17 @@
 
 <% @posts.each do |post|%>
   <pre> <%= post.content%></pre>
-  <%= image_tag(post.picture.url) if post.picture && post.picture.url %>
-  <%= link_to '編集' , edit_post_path(post.id)%>
-  <%= link_to '削除' , post_path(post.id) ,method: :delete , data:{confirm: "削除してもよろしいですか？"}%>
+  <%# <%= image_tag(post.picture.url) if post.picture && post.picture.url %> 
+  <%= link_to image_tag(post.picture.url, width: '230'), post_path(post.id) %>
+  <% if current_user.id != post.user.id %>
+    <% @favorite = current_user.favorites.find_by(post_id: post.id)%>
+      <% if @favorite.present?%>
+        <%= link_to 'お気に入り解除' , favorite_path(id: @favorite.id) , method: :delete , data:{confirm: "解除してもよろしいですか？"} %>
+      <% else %>
+        <%= link_to 'お気に入り登録' , favorites_path(post_id: post.id) , method: :post%>
+      <% end %>
+  <% else %>
+    <%= link_to '編集' , edit_post_path(post.id)%>
+    <%= link_to '削除' , post_path(post.id) ,method: :delete , data:{confirm: "削除してもよろしいですか？"}%>
+  <% end %>
 <% end %>

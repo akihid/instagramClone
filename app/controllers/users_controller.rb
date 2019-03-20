@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.icon = "default.png"
+    # @user.icon = "default.png"
     if @user.save
       redirect_to user_path(@user.id)
     else
