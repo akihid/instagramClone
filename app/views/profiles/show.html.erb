@@ -1,9 +1,0 @@
-<p id="notice"><%= notice %></p>
-
-<p>アイコン：<%= image_tag @profile.picture.url %></p>
-<p>自己紹介：<%= @profile.content %></p>
-<p>性別：<%= @profile.gender ? '男' : '女' %></p>
-<p>年齢：<%= @profile.age %>歳</p>
-
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>

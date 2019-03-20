@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<p>アイコン：<%= @user.icon.url.nil? ? image_tag("default.png")  : image_tag(@user.icon.url) %></p>
+<p>名前：<%= @user.name %></p>
+<p>メールアドレス：<%= @user.email %></p>
+<p>自己紹介：<%= @user.content %></p>
+<p>性別：<%= @user.gender ? '男' : '女' %></p>
+<p>年齢：<%= @user.age %>歳</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

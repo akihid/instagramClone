@@ -2,6 +2,12 @@
 
 <%= form_with(model:@user , local: true) do |f| %>
 
+  <%= image_tag(@user.icon.url) if @user.icon && @user.icon.url %>
+
+  <%= f.label :icon %>
+  <%= f.file_field :icon %>
+  <%= f.hidden_field :icon_cache%>
+
   <%= f.label :name %>
   <%= f.text_field :name %>
 
@@ -13,6 +19,16 @@
 
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %>
+
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+
+  <%= f.label :gender %>
+  <label><%= f.radio_button :gender, true  %> 男 </label>
+  <label><%= f.radio_button :gender, false %> 女 </label>
+
+  <%= f.label :age %>
+  <%= f.text_field :age %>
 
   <%= f.submit '登録'%>
   <%= link_to '戻る', users_path%>
