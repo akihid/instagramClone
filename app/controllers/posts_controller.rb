@@ -21,7 +21,7 @@ class PostsController < ApplicationController
 
     if @post.save
       flash[:success] = "新規投稿しました。"
-      PostMailer.post_mail(@post).deliver 
+      # PostMailer.post_mail(@post).deliver 
       redirect_to posts_path
     else
       render 'new'
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
   def update
     if @post.update(post_params)
       flash[:info] = "投稿の編集をしました。"
-      PostMailer.post_mail(@post).deliver 
+      # PostMailer.post_mail(@post).deliver 
       redirect_to posts_path
     else
       render 'edit'
