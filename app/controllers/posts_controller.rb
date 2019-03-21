@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
-  
-  before_action :set_post , only:[:edit, :update, :show,:destroy]  
+
+  before_action :set_post , only:[:edit, :update, :show, :destroy ,:check_user]
+  before_action :check_user, only:[:edit, :update, :destroy]
 
   def index
     @posts = Post.all.order("updated_at DESC")
@@ -61,5 +62,9 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def check_user
+    redirect_to posts_path if current_user.id !=  @post.user_id
   end
 end

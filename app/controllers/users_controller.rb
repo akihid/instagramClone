@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
-  before_action :set_user , only:[:edit, :update ,:show]
+  before_action :set_user , only:[:edit, :update ,:show ,:check_user]
+  before_action :check_user , only:[:edit, :update]
+
   def index
     @Users = User.all
     @user = User.new
@@ -19,7 +21,6 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       flash[:success] = '会員登録しました'
       redirect_to posts_path
-      # redirect_to new_session_path
     else
       render 'new'
     end
@@ -47,6 +48,10 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def check_user
+    redirect_to edit_user_path(current_user.id) if current_user.id !=  @user.id
   end
 
 end
