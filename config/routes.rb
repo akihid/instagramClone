@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'users#new'
-  resources :users
+  resources :users , only:[:new , :create , :edit , :update , :show]
   resources :sessions , only:[:new , :create , :destroy]
   resources :posts do
     collection do

@@ -3,12 +3,10 @@ class UsersController < ApplicationController
   before_action :set_user , only:[:edit, :update ,:show ,:check_user]
   before_action :check_user , only:[:edit, :update]
 
-  def index
-    @Users = User.all
-    @user = User.new
-  end
   def new
-    if params[:back]
+    if logged_in?
+      redirect_to posts_path
+    elsif params[:back]
       @user = User.new(user_params)
     else
       @user = User.new
