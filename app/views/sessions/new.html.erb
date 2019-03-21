@@ -5,11 +5,11 @@
     <%= form_with(scope: :session , url: sessions_path ,local: true ,class:"form-small") do |f| %>
 
       <div class="form-group">
-        <%= f.label :email %>
+        <%= f.label :email , "メールアドレス"%>
         <%= f.email_field :email %>
       </div>
       <div class="form-group">
-        <%= f.label :password %>
+        <%= f.label :password , "パスワード"%>
         <%= f.password_field :password %>
       </div>
       <div class="text-center">

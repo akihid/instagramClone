@@ -22,7 +22,7 @@
       <div class="form-group">
         <%= f.label :picture%><br>
 
-        <%= image_tag(@post.picture.url) if @post.picture && @post.picture.url %>
+        <%= image_tag(@post.picture.url) if @post.picture && @post.picture.url %><br>
         <%= f.file_field :picture%>
       </div>
         <%= f.hidden_field :picture_cache %>

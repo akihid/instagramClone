@@ -1,0 +1,22 @@
+ja:
+  activerecord:
+    models:
+      post: "投稿"
+      user: "ユーザー"
+      favorite: 'お気に入り'
+    attributes:
+      post:
+        content: "一言"
+        picture: '画像'
+      user:
+        name: "名前"
+        email: "メールアドレス"
+        current_password: "現在のパスワード"
+        icon: "アイコン"
+        gender: "性別"
+        age: "年齢"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+      favorite:
+        user_id: "ユーザーID"
+        post_id: "投稿ID"

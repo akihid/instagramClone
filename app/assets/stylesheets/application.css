@@ -30,10 +30,6 @@ h1{
   font-size:1rem;
 }
 
-.field_with_errors {
-  display: inline-block;
-}
-
 header{
   background:#FAFAFA;
   height: 50px;
@@ -138,6 +134,9 @@ textarea{
   width:100%;
   border: 1px solid #ccc;
   resize: none;
+}
+input:not(.btn){
+  width: 100%;
 }
 
 .btn{
