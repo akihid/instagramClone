@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   def new
     if logged_in?
-      # redirect_to 投稿一覧へ
+      redirect_to posts_path
     end
   end
 
@@ -9,17 +9,17 @@ class SessionsController < ApplicationController
     @user = User.find_by(email:params[:session][:email].downcase)
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
-      redirect_to users_path
-      # マイページへ
+      flash[:success] = 'ログインしました'
+      redirect_to posts_path
     else
-      flash[:danger] = 'ログイン失敗'
+      flash[:danger] = 'ログインに失敗しました'
       render 'new'
     end
   end
 
   def destroy
     session.delete(:user_id)
-    flash[:notice] = 'ログアウト'
+    flash[:info] = 'ログアウトしました'
     redirect_to new_session_path
   end
 end

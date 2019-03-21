@@ -1,15 +1,13 @@
-<div class="row">
 
+<div class="row">
   <% @posts.each do |post|%>
     <div class="col-md-3">
       <div class="post-list-area">
 
       <div class="row">
         <div class="col-md-6 text-left">
-
-        <a href="/users/<%= post.user_id %>">
-          <p><%= image_tag(post.user.icon.url,class:"post-icon") %>投稿者：<%= post.user.name %></p>
-        </a>
+          <p><%= post.user.icon.url.nil? ? image_tag("default.png" ,class:"post-icon")  : image_tag(post.user.icon.url,class:"post-icon") %>
+          投稿者：<%= post.user.name %></p>
         </div>
         <div class="col-md-6 text-right">
           <% if current_user.id != post.user.id %>
@@ -19,9 +17,6 @@
             <% else %>
               <%= link_to image_tag('unlike.png' , width:'20' , class:"icon") , favorites_path(post_id: post.id) , method: :post%>
             <% end %>
-          <% else %>
-            <%= link_to image_tag('edit.png' , width:'15' , class:"icon")  , edit_post_path(post.id)%>
-            <%= link_to image_tag('dust.png' , width:'15' , class:"icon") , post_path(post.id) ,method: :delete , data:{confirm: "削除してもよろしいですか？"}%>
           <% end %>
         </div>
       </div>

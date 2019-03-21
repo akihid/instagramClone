@@ -1,36 +1,59 @@
 <%= render partial: "error" %>
 
-<%= form_with(model:@user , local: true) do |f| %>
+<div class="row">
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-6 text-left">
+    <%= form_with(model:@user , local: true , class:"form-border") do |f| %>
 
-  <%= image_tag(@user.icon.url) if @user.icon && @user.icon.url %>
+      <div class="form-group">
+      <%= f.label :icon %><br>
+      <%= image_tag(@user.icon.url,class:"mypage-icon") if @user.icon && @user.icon.url %>
+      <%= f.file_field :icon %>
+      <%= f.hidden_field :icon_cache%>
+      </div>
+      <div class="form-group">
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+      </div>
 
-  <%= f.label :icon %>
-  <%= f.file_field :icon %>
-  <%= f.hidden_field :icon_cache%>
+      <div class="form-group">
+      <%= f.label :email %><br>
+      <%= f.email_field :email %>
+      </div>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+      <div class="form-group">
+      <%= f.label :content %><br>
+      <%= f.text_area :content %>
+      </div>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %>
+      <div class="form-group">
+      <%= f.label :gender %><br>
+      <label><%= f.radio_button :gender, true  %> 男 </label>
+      <label><%= f.radio_button :gender, false %> 女 </label>
+      </div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+      <div class="form-group">
+      <%= f.label :age %><br>
+      <%= f.text_field :age %>
+      </div>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
+      <div class="form-group">
+        <%= f.label :password %><br>
+        <%= f.password_field :password %>
+      </div>
 
-  <%= f.label :content %>
-  <%= f.text_field :content %>
+      <div class="form-group">
+        <%= f.label :password_confirmation %><br>
+        <%= f.password_field :password_confirmation %>
+      </div>
 
-  <%= f.label :gender %>
-  <label><%= f.radio_button :gender, true  %> 男 </label>
-  <label><%= f.radio_button :gender, false %> 女 </label>
-
-  <%= f.label :age %>
-  <%= f.text_field :age %>
-
-  <%= f.submit '登録'%>
-  <%= link_to '戻る', users_path%>
-
-<% end %>
+      <div class="text-right">
+        <%= f.submit '更新',class:"btn btn-default btn-xs"%>
+        <%= link_to '一覧へ', posts_path,class:"btn btn-default btn-xs"%>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-3">
+  </div>
+</div>

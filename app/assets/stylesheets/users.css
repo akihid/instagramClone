@@ -1,0 +1,15 @@
+.mypage-icon {
+  width: 100px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.post-icon {
+  height: 20px;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+
+.mypage-left{
+  float: left;
+}

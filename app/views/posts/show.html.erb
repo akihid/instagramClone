@@ -1,7 +1,43 @@
 <p id="notice"><%= notice %></p>
 
-<p>アイコン：<%= image_tag(@post.picture.url) %></p>
-<p>名前：<%= @post.content %></p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<div class="row">
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-6 text-left">
+    <div class:"form-small">
+
+      <div class="row post-show-area">
+        <div class="col-md-6">
+          <p><%= image_tag(@post.picture.url , width:'350') %></p>
+        </div>
+        <div class="col-md-6">
+          <div class="post-show-top-area">
+            <div class="text-left float-left-area">
+              <p>投稿者：<%= @post.user.name %></p>
+            </div>
+            <div class="text-right">
+              <% if current_user.id == @post.user_id%>
+                <%= link_to image_tag('edit.png' , width:'15' , class:"icon") , edit_post_path(@post) %>
+                <%= link_to image_tag('dust.png' , width:'15' , class:"icon") , post_path(@post.id) ,method: :delete ,data:{confirm:'削除しますがよろしいですか？'} %>
+              <% else %>
+                <% @favorite = current_user.favorites.find_by(post_id: @post.id)%>
+                  <% if @favorite.present?%>
+                    <%= link_to image_tag('like.png' , width:'20' , class:"icon") , favorite_path(id: @favorite.id) , method: :delete , data:{confirm: "解除してもよろしいですか？"} %>
+                  <% else %>
+                    <%= link_to image_tag('unlike.png' , width:'20' , class:"icon") , favorites_path(post_id: @post.id) , method: :post%>
+                  <% end %>
+              <% end %>
+            </div>
+          </div>
+
+          <pre class="post-msg-area"><%= @post.content %></pre>
+            <div class="text-right">
+              <%= link_to '一覧へ', posts_path %>
+            </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+  </div>
+</div>

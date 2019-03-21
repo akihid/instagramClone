@@ -1,20 +1,33 @@
 <%= render partial: "error" %>
 
-<%= form_with(model:@user , local: true) do |f| %>
-
+<div class="row">
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-6 text-left">
+<%= form_with(model:@user , local: true, class:"form-small") do |f| %>
+<div class="form-group">
   <%= f.label :name %>
   <%= f.text_field :name %>
-
+  </div>
+<div class="form-group">
   <%= f.label :email %>
   <%= f.email_field :email %>
-
+  </div>
+<div class="form-group">
   <%= f.label :password %>
   <%= f.password_field :password %>
-
+  </div>
+<div class="form-group">
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %>
+  </div>
 
-  <%= f.submit '登録'%>
-  <%= link_to '戻る', users_path%>
-
+  <%# <% f.file_field :icon ,value="default.png"%> 
+<div class="text-center">
+  <%= f.submit '会員登録' ,class:"btn btn-primary btn-md"%><br>
+  <p class="small-text">アカウントをお持ちですか？ <%= link_to 'ログインする', new_session_path%></p>
+</div>
 <% end %>
+  </div>
+  <div class="col-md-3">
+  </div>

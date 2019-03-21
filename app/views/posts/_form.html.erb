@@ -8,19 +8,32 @@
   </ul>
   </div>
 <% end %>
+<div class="row">
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-6 text-left">
+    <%= form_with(model: @post, local: true, url: chose_new_or_edit, class:"form-border") do |f|%>
 
-<%= form_with(model: @post, local: true, url: chose_new_or_edit) do |f|%>
+      <div class="form-group">
+        <%= f.label :content %>
+        <%= f.text_area :content %>
+      </div>
 
-  <%= f.label :content %>
-  <%= f.text_area :content %>
+      <div class="form-group">
+        <%= f.label :picture%><br>
 
-  <%= f.label :picture%>
+        <%= image_tag(@post.picture.url) if @post.picture && @post.picture.url %>
+        <%= f.file_field :picture%>
+      </div>
+        <%= f.hidden_field :picture_cache %>
 
-  <%= image_tag(@post.picture.url) if @post.picture && @post.picture.url %>
-  <%= f.file_field :picture%>
-  <%= f.hidden_field :picture_cache %>
+      <div class="text-right">
+        <%= f.submit '登録',class:"btn btn-default btn-xs"%>
+        <%= link_to '一覧へ' , posts_path,class:"btn btn-default btn-xs"%>
+      </div>
 
-  <%= f.submit '登録'%>
-  <%= link_to '戻る' , posts_path%>
-
-<% end %>
+    <% end %>
+  </div>
+  <div class="col-md-3">
+  </div>
+</div>

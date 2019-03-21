@@ -1,0 +1,39 @@
+.post-msg-area{
+  height:280px;
+}
+
+.confirm-text-area{
+  height:50px;
+  padding: 0;
+  font-size:1rem;
+  background: #FFF;
+}
+
+.post-list-area{
+  height:300px;
+  margin-top: 5px;
+  padding-top:5px;
+  font-size: 10px;
+  border: 1px solid #ccc;
+  background: #F8F8F8;
+  text-align: left;
+}
+
+.post-show-area{
+  height:380px;
+  padding-top: 10px;
+  background: #F8F8F8;
+  border: 1px solid #ccc;
+}
+.post-show-top-area{
+  overflow: hidden;
+}
+
+.hidden_filed{
+  display: none;
+}
+
+.icon{
+  margin-right: 10px;
+}
+

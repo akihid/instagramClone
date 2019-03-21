@@ -1,11 +1,31 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-2">
+    <p><%= image_tag(@user.icon.url,class:"mypage-icon") %></p>
+    <h2><%= @user.name %></h2>
+  </div>
+  <div class="col-md-4 text-left">
+    <div class="form-group">
+      <p>メールアドレス：<%= @user.email %></p>
+    </div>
+    <div class="form-group">
+    <p>自己紹介：<pre><%= @user.content %></pre></p>
+    </div>
+    <div class="form-group">
+    <p>性別：<%= @user.gender ? '男' : '女' %></p>
+    </div>
+    <div class="form-group">
+    <p>年齢：<%= @user.age %>歳</p>
+    </div>
+      <div class="text-right">
+      <% if current_user.id == @user.id%>
+        <%= link_to '編集', edit_user_path(@user) ,class:"btn btn-default btn-xs"%> 
+      <% end %>
+      <%= link_to '一覧へ', posts_path ,class:"btn btn-default btn-xs"%>
+   </div>
+  <div class="col-md-3">
+  </div>
+</div>
 
-<p>アイコン：<%= @user.icon.url.nil? ? image_tag("default.png")  : image_tag(@user.icon.url) %></p>
-<p>名前：<%= @user.name %></p>
-<p>メールアドレス：<%= @user.email %></p>
-<p>自己紹介：<%= @user.content %></p>
-<p>性別：<%= @user.gender ? '男' : '女' %></p>
-<p>年齢：<%= @user.age %>歳</p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', posts_path %>

@@ -19,6 +19,7 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
 
     if @post.save
+      flash[:success] = "新規投稿しました。"
       redirect_to posts_path
     else
       render 'new'
@@ -36,6 +37,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
+      flash[:info] = "投稿の編集をしました。"
       redirect_to posts_path
     else
       render 'edit'
@@ -47,6 +49,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
+    flash[:danger] = "投稿を削除しました。"
     redirect_to posts_path
   end
 
